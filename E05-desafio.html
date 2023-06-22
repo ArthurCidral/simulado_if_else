@@ -1,20 +1,36 @@
+<meta charset=”UTF-8″>
 <script>
-    //PROBLEMA
-    /*
-    Faça um script que pergunte ao veterinário quantas consultas de baixa complexidade atende por dia, quantas consultas de média complexidade atende por dia e quantas consultas de alta complexidade atende por dia.
-    Considere que os procedimentos de baixa complexidade consomem 15 minutos, os de média complexidade consomem 40 minutos e os de alta complexidade consomem 75 minutos.
-    Calcule o tempo total que o veterinário deverá trabalhar para realizar todos os atendimentos no dia.
-    Se o tempo de trabalho não ultrapassar as 8 horas, o salário do veterinário será R$ 50,00 a hora. Caso o tempo de trabalho estiver entre 8 e 10 horas, o preço da hora será de R$ 75,00. Ultrapassando as 10 horas, o preço da hora será de R$ 90,00.
-    Apresente em tela as horas e minutos trabalhados e o valor total que o veterinário receberá.
-    */
+    let consultasBaixaComplexidade = parseInt(prompt("Quantas consultas de baixa complexidade você atende por dia?"));
+    let consultasMediaComplexidade = parseInt(prompt("Quantas consultas de média complexidade você atende por dia?"));
+    let consultasAltaComplexidade = parseInt(prompt("Quantas consultas de alta complexidade você atende por dia?"));
 
-    //ENTRADA
+    const tempoConsultaBaixaComplexidade = 15;
+    const tempoConsultaMediaComplexidade = 40;
+    const tempoConsultaAltaComplexidade = 75;
 
+    const horasPorDia = 8;
+    const horasAdicionais1 = 2;
+    const valorHora1 = 50;
+    const horasAdicionais2 = 2;
+    const valorHora2 = 75;
+    const valorHora3 = 90;
 
-    //PROCESSAMENTO
+    let tempoTotalMinutos = (consultasBaixaComplexidade * tempoConsultaBaixaComplexidade) + (consultasMediaComplexidade * tempoConsultaMediaComplexidade) + (consultasAltaComplexidade * tempoConsultaAltaComplexidade);
+    let tempoTotalHoras = Math.floor(tempoTotalMinutos / 60);
+    let tempoTotalMinutosRestantes = tempoTotalMinutos % 60;
 
-    
-    //SAÍDA
+    let salario = 0;
 
+    if (tempoTotalHoras <= horasPorDia) {
+        salario = tempoTotalHoras * valorHora1;
+    } else if (tempoTotalHoras <= (horasPorDia + horasAdicionais1)) {
+        salario = (horasPorDia * valorHora1) + ((tempoTotalHoras - horasPorDia) * valorHora2);
+    } else {
+        salario = (horasPorDia * valorHora1) + (horasAdicionais1 * valorHora2) + ((tempoTotalHoras - horasPorDia - horasAdicionais1) * valorHora3);
+    }
 
+    let mensagem = "Tempo trabalhado: " + tempoTotalHoras + " horas e " + tempoTotalMinutosRestantes + " minutos.\n";
+    mensagem += "Valor total a receber: R$" + salario.toFixed(2);
+
+    alert(mensagem);
 </script>

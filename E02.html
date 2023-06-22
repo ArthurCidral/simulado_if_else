@@ -1,19 +1,24 @@
+<meta charset=”UTF-8″>
 <script>
-    //PROBLEMA: Compra na Feira
-    //Considere que a pessoa foi até a feira e realizou algumas compras, sendo:
-    //Mamão: 5 Unidades
-    //Melancia: 3 Kg
-    //Abacate: 4 Unidades
-    //Cebola: 1.1 Kg
-    //Peça para o usuário informar o preço do Kg ou da Unidade de cada um dos produtos que comprou (citados acima) e peça também para o usuário informar quanto dinheiro possui para realizar a compra.
-    //Calcule o custo total dos alimentos e verifique se há dinheiro suficiente para realizar a compra, indicando se sobrará ou faltará dinheiro, e também apresentando qual foi a quantia que sobrou ou faltou para realizar a compra. Apresente também na tela o valor total da compra.
-
-    //ENTRADA
-
-
-    //PROCESSAMENTO
-
-
-    //SAÍDA
-
+    let precoMamao = parseFloat(prompt("Digite o preço do Kg ou da unidade do mamão:"));
+    let precoMelancia = parseFloat(prompt("Digite o preço do Kg ou da unidade da melancia:"));
+    let precoAbacate = parseFloat(prompt("Digite o preço do Kg ou da unidade do abacate:"));
+    let precoCebola = parseFloat(prompt("Digite o preço do Kg ou da unidade da cebola:"));
+    let dinheiroDisponivel = parseFloat(prompt("Digite a quantia de dinheiro disponível para realizar a compra:"));
+    
+    let custoMamao = 5 * precoMamao;
+    let custoMelancia = 3 * precoMelancia;
+    let custoAbacate = 4 * precoAbacate;
+    let custoCebola = 1.1 * precoCebola;
+    
+    let custoTotal = custoMamao + custoMelancia + custoAbacate + custoCebola;
+    
+    if (custoTotal <= dinheiroDisponivel) {
+      let troco = dinheiroDisponivel - custoTotal;
+      alert("Compra realizada com sucesso! O valor total da compra é: R$" + custoTotal.toFixed(2) + "\nSobrou R$" + troco.toFixed(2));
+    } else {
+      let falta = custoTotal - dinheiroDisponivel;
+      alert("Dinheiro insuficiente para realizar a compra! Faltam R$" + falta.toFixed(2));
+    }
+    
 </script>
